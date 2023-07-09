@@ -12,7 +12,7 @@ export class Table extends ExcelComonent {
    constructor($root) {
       super($root, {
          name: 'Table',
-         listeners: ['click', 'mousedown', 'keydown', 'mousemove', 'mouseup'],
+         listeners: ['mousedown', 'keydown'],
       });
    }
 
@@ -68,10 +68,4 @@ export class Table extends ExcelComonent {
          this.selection.select($next);
       }
    }
-
-   onClick(event) {}
-
-   onMousemove(event) {}
-
-   onMouseup(event) {}
 }
