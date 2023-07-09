@@ -29,9 +29,14 @@ git branch -M main
 git remote add origin https://github.com/nikkey78/excel1.git
 git push -u origin main
 
+
 git checkout -b "webpack"
+
 git add .
 git commit -m "some message"
 git push -u origin webpack
+
+git checkout main
+git pull 
 
 
