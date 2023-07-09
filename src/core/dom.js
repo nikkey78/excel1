@@ -60,6 +60,18 @@ class Dom {
          this.$el.style[key] = value;
       });
    }
+
+   find(selector) {
+      return $(this.$el.querySelector(selector))
+   }
+
+   addClass(className) {
+      this.$el.classList.add(className)
+   }
+
+   removeClass(className) {
+      this.$el.classList.remove(className)
+   }
 }
 
 export function $(selector) {
