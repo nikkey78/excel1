@@ -1,4 +1,4 @@
-import { ExcelComonent } from '@core/ExcelComponent';
+import { ExcelComponent } from '@core/ExcelComponent';
 import { createTable } from './table.template';
 import { resizeHandler } from './table.resize';
 import { TableSelection } from './TableSelection';
@@ -6,13 +6,14 @@ import { isCell, shouldResize, matrix, nextSelector } from './table.functions';
 
 import { $ } from '@core/dom';
 
-export class Table extends ExcelComonent {
+export class Table extends ExcelComponent {
    static className = 'excel__table';
 
-   constructor($root) {
+   constructor($root, options) {
       super($root, {
          name: 'Table',
          listeners: ['mousedown', 'keydown'],
+         ...options,
       });
    }
 
@@ -28,6 +29,10 @@ export class Table extends ExcelComonent {
       super.init();
       const $cell = this.$root.find('[data-id="0:0"]');
       this.selection.select($cell);
+
+      this.emitter.subscribe('print-formula', text => {
+         this.selection.current.text(text)
+      });
    }
 
    onMousedown(event) {
