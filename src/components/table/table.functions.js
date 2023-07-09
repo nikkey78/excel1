@@ -26,3 +26,27 @@ function range(start, end) {
    }
    return new Array(len).fill('').map((_, i) => i + start);
 }
+
+export function nextSelector(key, { col, row }) {
+   const MIN_VALUE = 0;
+   switch (key) {
+      case 'Enter':
+      case 'ArrowDown':
+         row++;
+         break;
+      case 'ArrowUp':
+         row = row - 1 < MIN_VALUE ? MIN_VALUE : --row;
+         break;
+      case 'ArrowLeft':
+         col = col - 1 < MIN_VALUE ? MIN_VALUE : --col;
+         break;
+      case 'Tab':
+      case 'ArrowRight':
+         col++;
+         break;
+
+      default:
+         break;
+   }
+   return `[data-id="${row}:${col}"]`;
+}
