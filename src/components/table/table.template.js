@@ -4,7 +4,12 @@ const CODES = {
 };
 
 function toCell(rowIdx, colIdx) {
-   return `<div class="cell" contenteditable data-id="${rowIdx}:${colIdx}" data-col="${colIdx}"></div>`;
+   return `<div class="cell" 
+               contenteditable
+               data-type="cell"
+               data-id="${rowIdx}:${colIdx}" 
+               data-col="${colIdx}">
+         </div>`;
 }
 
 function toColumm(col, colIndex) {
@@ -43,10 +48,7 @@ export function createTable(rowsCount = 15) {
    rows.push(createRow(cols, ''));
 
    for (let rowIdx = 0; rowIdx < rowsCount; rowIdx++) {
-      const cells = new Array(colsCount)
-         .fill(rowIdx)
-         .map(toCell)
-         .join('\n');
+      const cells = new Array(colsCount).fill(rowIdx).map(toCell).join('\n');
       rows.push(createRow(cells, rowIdx + 1));
    }
 
